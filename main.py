@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Request
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -25,4 +25,10 @@ async def demo_post(inp: Msg):
 @app.get("/path/{path_id}")
 async def demo_get_path_id(path_id: int):
     return {"message": f"This is /path/{path_id} endpoint, use post request to retrieve result"}
+
+@app.post("/webhook")
+async def demo_webhook(request: Request):
+    data = await request.body()
+    print(data)
+    return {"message": str(data)}
 
