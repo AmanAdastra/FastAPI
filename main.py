@@ -14,7 +14,7 @@ async def root():
 
 @app.get("/path")
 async def demo_get():
-    return {"message": "This is /path endpoint, use a post request to transform the text to uppercase"}
+    return {"message": "This is /path endpoint, using GET method"}
 
 
 @app.post("/path")
@@ -25,3 +25,4 @@ async def demo_post(inp: Msg):
 @app.get("/path/{path_id}")
 async def demo_get_path_id(path_id: int):
     return {"message": f"This is /path/{path_id} endpoint, use post request to retrieve result"}
+
